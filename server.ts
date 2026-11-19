@@ -1124,8 +1124,24 @@ ${recentHistory ? `Recent Conversation:\n${recentHistory}\n\n` : ''}Student Ques
   if (process.env.NODE_ENV !== 'production') {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: { middlewareMode: true, hmr: false },
       appType: 'spa',
+    });
+    app.get('/@vite/client', async (_req, res, next) => {
+      try {
+        const transformed = await vite.transformRequest('/@vite/client');
+        if (!transformed) {
+          next();
+          return;
+        }
+        const safeClientCode = transformed.code.replace(
+          'transport.connect(createHMRHandler(handleMessage));',
+          '/* HMR WebSocket disabled in middleware mode */'
+        );
+        res.type('application/javascript').send(safeClientCode);
+      } catch (err) {
+        next(err);
+      }
     });
     app.use(vite.middlewares);
   } else {
