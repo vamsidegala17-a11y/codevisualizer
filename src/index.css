@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Monaco active execution line highlighting */
+.cv-active-line-light {
+  background-color: rgba(2, 132, 199, 0.16) !important;
+  border-left: 3px solid #0284c7;
+}
+
+.cv-active-line-dark {
+  background-color: rgba(56, 189, 248, 0.18) !important;
+  border-left: 3px solid #38bdf8;
+}
+
+.cv-depends-line-light {
+  background-color: rgba(217, 119, 6, 0.1) !important;
+  border-left: 2px dashed #d97706;
+}
+
+.cv-depends-line-dark {
+  background-color: rgba(251, 191, 36, 0.1) !important;
+  border-left: 2px dashed #fbbf24;
+}
+
+.cv-feeds-line-light {
+  background-color: rgba(5, 150, 105, 0.1) !important;
+  border-left: 2px dotted #059669;
+}
+
+.cv-feeds-line-dark {
+  background-color: rgba(52, 211, 153, 0.1) !important;
+  border-left: 2px dotted #34d399;
+}
+
+.cv-active-glyph {
+  background: #0284c7;
+  border-radius: 9999px;
+  width: 8px !important;
+  height: 8px !important;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+
+.dark .cv-active-glyph {
+  background: #38bdf8;
+}
+
+/* Focused part / clicked line highlighting */
+.cv-focused-line-light {
+  background-color: rgba(124, 58, 237, 0.14) !important;
+  border-left: 3px solid #7c3aed;
+}
+
+.cv-focused-line-dark {
+  background-color: rgba(167, 139, 250, 0.18) !important;
+  border-left: 3px solid #a78bfa;
+}
+
+.cv-focused-glyph {
+  background: #7c3aed;
+  border-radius: 2px;
+  width: 8px !important;
+  height: 8px !important;
+  margin-top: 6px;
+  margin-left: 6px;
+}
+
+.dark .cv-focused-glyph {
+  background: #a78bfa;
+}
+
+/* Subtle custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.55);
+}
+
+/* React Flow theme integration */
+.react-flow__attribution {
+  display: none;
+}

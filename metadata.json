@@ -1,0 +1,6 @@
+{
+  "name": "Code Visualizer",
+  "description": "Interactive AI-powered step-by-step code execution visualizer and programming teacher.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
